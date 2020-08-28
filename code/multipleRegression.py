@@ -13,16 +13,15 @@ profit = dataframe.iloc[:, -1].values
 otherdate = dataframe.iloc[:, :-1].values
 
 # one hot encoding
-ct = ColumnTransformer(transformers=[("encoder", OneHotEncoder(), [3])],
-                       remainder="passthrough")
+ct = ColumnTransformer(
+    transformers=[("encoder", OneHotEncoder(), [3])], remainder="passthrough"
+)
 
 otherdate = array(ct.fit_transform(otherdate))
 
-(otherdata_train, otherdate_test, profit_train,
- profit_test) = train_test_split(otherdate,
-                                 profit,
-                                 test_size=0.2,
-                                 shuffle=False)
+(otherdata_train, otherdate_test, profit_train, profit_test) = train_test_split(
+    otherdate, profit, test_size=0.2, shuffle=False
+)
 
 regressor = LinearRegression()
 regressor.fit(otherdata_train, profit_train)
@@ -36,4 +35,5 @@ print(
             profit_test.reshape(len(profit_test), 1),
         ),
         axis=1,
-    ))
+    )
+)
