@@ -32,11 +32,17 @@ print(pri_sal)
 
 # plot the model perdition
 pos = sc_pos.inverse_transform(pos)
+
+pos_grid = np.arange(min(pos), max(pos), 0.1)
+pos_grid = pos_grid.reshape(len(pos_grid), 1)
+
 sal = sc_sal.inverse_transform(sal)
-pri_sal = sc_sal.inverse_transform(regressor.predict(
-    sc_pos.fit_transform(pos)))
+
+pri_sal_grid = sc_sal.inverse_transform(
+    regressor.predict(sc_pos.fit_transform(pos_grid)))
+
 plt.scatter(pos, sal, color='red')
-plt.plot(pos, pri_sal, color='green')
+plt.plot(pos_grid, pri_sal_grid, color='green')
 plt.title('sal vs postion')
 plt.xlabel('position')
 plt.ylabel('salary')
