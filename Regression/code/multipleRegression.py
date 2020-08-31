@@ -6,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
-dataframe = pd.read_csv("./DataSets/50_Startups.csv")
+dataframe = pd.read_csv("./Regression/DataSets/50_Startups.csv")
 
 # fetch data
 profit = dataframe.iloc[:, -1].values

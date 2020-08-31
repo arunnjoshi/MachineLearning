@@ -6,7 +6,7 @@ from sklearn.preprocessing import PolynomialFeatures
 
 import matplotlib.pyplot as plt
 
-dataset = pd.read_csv("./datasets/position_salaries.csv")
+dataset = pd.read_csv("./Regression/DataSets/position_salaries.csv")
 pos = dataset.iloc[:, 1].values
 sal = dataset.iloc[:, -1].values
 
