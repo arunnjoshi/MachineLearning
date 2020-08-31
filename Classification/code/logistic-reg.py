@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
 
 # preprocessing csv file
 dataset = pd.read_csv("./classification/datasets/social_network_ads.csv")
@@ -27,6 +28,7 @@ regressor.fit(other_data_train, purchased_train)
 value = sc.transform([[32, 150000]])
 # print(regressor.predict(value))
 result = regressor.predict(other_data_test)
+# print predict and real values
 print(
     np.concatenate(
         (
@@ -36,3 +38,8 @@ print(
         axis=1,
     )
 )
+print(acc)
+
+# confusion matrix
+cm = confusion_matrix(purchased_test, result)
+acc = accuracy_score(purchased_test, result)
