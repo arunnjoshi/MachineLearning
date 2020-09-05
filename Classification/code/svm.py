@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 from sklearn.metrics import confusion_matrix, accuracy_score
 
 # preprocessing csv file
@@ -22,7 +22,7 @@ other_data_train = sc.fit_transform(other_data_train)
 other_data_test = sc.fit_transform(other_data_test)
 
 # train model
-regressor = LogisticRegression(random_state=0)
+regressor = SVC(kernel="rbf")
 regressor.fit(other_data_train, purchased_train)
 
 value = sc.transform([[32, 150000]])
@@ -39,7 +39,8 @@ print(
     )
 )
 
+
 # confusion matrix
 cm = confusion_matrix(purchased_test, result)
 acc = accuracy_score(purchased_test, result)
-print(acc)
+print(cm, acc)
