@@ -1,5 +1,4 @@
 import numpy as np
-from pandas.core.generic import Level
 
 """
     this is mine sweeper game logic .
